@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# **Flashcards App**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean and simple flashcards web application built with **React, TypeScript, Tailwind CSS, and LocalStorage**.
 
-Currently, two official plugins are available:
+Create decks, add cards, study with a flip animation, and switch between light/dark themes — all stored directly in your browser.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Live Demo
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+> Vercel Link:
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Features
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **Deck Management**
+  - Create new decks
+  - Edit deck name & description
+  - Delete decks
+- **Card Management**
+  - Add cards with question (front) + answer (back)
+  - Edit existing cards
+  - Delete cards
+- **Study Mode**
+  - Flip card animation
+  - Click to reveal the answer
+  - Next/Previous buttons
+  - Progress indicator (e.g. `Card 3 of 10` )
+  - Simple study timer
+- **UI Enhancement**
+  - Beautiful light/dark themes
+  - Theme toggle with smooth animation
+  - Dynamic Navbar with active link styling
+  - Breadcrumbs showing navigation path
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+> Everything is saved automatically using **LocalStorage**, so your decks stay even after closing the page.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+---
+
+## Tech Stack
+
+- **React + TypeScript**
+- **Vite** (lightweight build tool)
+- **Tailwind CSS** (styling)
+- **React Router** (page navigation)
+- **Heroicons** (icons)
+- **LocalStorage API** (persistent data)
+
+---
+
+## **Getting Started**
+
+1. **Clone the repository**
+
+   ```
+   git clone https://github.com/RimasSaad/flashcards-app.git
+   cd flashcards-app
+   ```
+
+2. **Install dependencies**
+
+   ```
+   npm install
+   ```
+
+3. **Start the development server**
+
+   ```
+   npm run dev
+   ```
+
+The app will run at:
+
+`http://localhost:5173`
+
+---
+
+## **Project Structure**
+
+```
+src/
+ ├── components/        # Navbar, Breadcrumbs, Flashcard, Forms, etc.
+ ├── pages/             # Home, Deck, Study, About
+ ├── hooks/             # useAppData(), useTheme()
+ ├── utils/             # LocalStorage helpers
+ ├── types/             # TypeScript models (Deck, Card, AppData)
+ ├── assets/            # Logos (light/dark)
+ └── App.tsx            # App entry + routing
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## **Key Architectural Highlights**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Custom Data Hook (`useAppData`)**
+  Manages all app data:
+  - decks
+  - cards
+  - updates
+  - deletions
+  - last opened deck
+  - full sync with LocalStorage
+- **Custom Theme Hook (`useTheme`)**
+  Handles:
+  - reading saved theme
+  - applying `dark` class to `<html>`
+  - toggle UI with icons
+  - persistent user preference
+- **Routing Structure**
+  ```
+  "/"                     → Home
+  "/deck/:deckId"         → Deck Page
+  "/deck/:deckId/study"   → Study Mode
+  "/about"                → About Page
+  ```
+- **Clean Flashcard UI**
+  - 3D flip animation
+  - smooth transitions
+  - mobile-friendly interaction
+
+---
+
+## **Project Motivation**
+
+This app was built as a practice project to explore:
+
+- clean component architecture
+- React + TypeScript patterns
+- reusable custom hooks
+- responsive UI with Tailwind
+- real-world state management using LocalStorage
+
+It’s both a functional tool and a learning project designed to showcase modern front-end development practices.
