@@ -9,8 +9,7 @@ Create decks, add cards, study with a flip animation, and switch between light/d
 ## Live Demo
 
 > Vercel Link:
-
----
+> https://flashcard-fr3xz602w-rimassaads-projects.vercel.app/
 
 ## Features
 
