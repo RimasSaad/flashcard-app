@@ -1,5 +1,5 @@
 // src/pages/AboutPage.tsx
-// About Page providing information about the Flashcards app
+// About Page which explains the benefits of using flashcards for learning.
 
 import {
   AcademicCapIcon,
